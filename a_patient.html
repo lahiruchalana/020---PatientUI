@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Patient</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="layout_4/LTR/default/full/assets/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="layout_4/LTR/default/full/assets/css/styles.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script src="global_assets/js/main/jquery.min.js"></script>
+	<script src="global_assets/js/main/bootstrap.bundle.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files --> 
+
+	
+	<script src="global_assets/js/plugins/visualization/d3/d3.min.js"></script>
+	<script src="global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+	<script src="global_assets/js/plugins/ui/moment/moment.min.js"></script>
+	<script src="global_assets/js/plugins/pickers/daterangepicker.js"></script>
+
+	<script src="layout_4/LTR/default/full/assets/js/app.js"></script>
+	<script src="global_assets/js/demo_pages/dashboard.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/streamgraph.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/sparklines.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/lines.js"></script>	
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/areas.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/donuts.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/bars.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/progress.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/heatmaps.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/pies.js"></script>
+	<script src="global_assets/js/demo_charts/pages/dashboard/light/bullets.js"></script>
+
+	<script src="global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+	<script src="global_assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="global_assets/js/demo_pages/form_select2.js"></script>
+
+	<script src="global_assets/js/demo_pages/form_input_groups.js"></script>
+	<script src="global_assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+
+<body>
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-expand-lg navbar-dark navbar-static">
+		<div class="d-flex flex-1 d-lg-none">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+				<i class="icon-paragraph-justify3"></i>
+				<span class="badge badge-mark border-warning m-1"></span>
+			</button>
+		</div>
+
+		<div class="navbar-brand wmin-0 mr-lg-5">
+			<a href="index.html" class="d-inline-block">
+				<img src="global_assets/images/logo_light.png" class="d-none d-sm-block" alt="">
+				<img src="global_assets/images/logo_icon_light.png" class="d-sm-none" alt="">
+			</a>
+		</div>
+
+		<div class="collapse navbar-collapse order-2 order-lg-1" id="navbar-mobile">
+			<ul class="navbar-nav">
+
+			</ul>
+		</div>
+
+	</div>
+	<!-- /main navbar -->
+
+
+	<!-- Footer navbar -->
+	<div id="footer" class="navbar navbar-expand navbar-light px-0 px-lg-3">
+		<div class="overflow-auto overflow-lg-visible scrollbar-hidden flex-1">
+			<ul class="navbar-nav flex-row text-nowrap">
+				<li id="footer-item" class="nav-item">
+					<a href="index.html" class="navbar-nav-link active">
+						<i class="icon-home4 mr-2"></i>
+					</a>
+				</li>	
+				<li id="footer-item" class="nav-item">
+					<a href="#" class="navbar-nav-link active">
+						<i class="icon-user mr-2"></i>
+					</a>
+				</li>	
+				<li id="footer-item" class="nav-item">
+					<a href="index.html" class="navbar-nav-link active">
+						<i class="icon-stack-text mr-2"></i>
+					</a>
+				</li>	
+				<li id="footer-item" class="nav-item">
+					<a href="index.html" class="navbar-nav-link active">
+						<i class="icon-search4 mr-2"></i>
+					</a>
+				</li>	
+				<li id="footer-item" class="nav-item">
+					<a href="index.html" class="navbar-nav-link active">
+						<i class="icon-vcard mr-2"></i>
+					</a>
+				</li>					
+			</ul>
+		</div>
+	</div>
+	<!-- /secondary navbar -->
+		
+
+	<!-- Page content -->
+	</br>
+
+	<div class="page-content pt-0">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Content area -->
+			<div class="content">
+
+				<!-- Main charts -->
+				<div class="row">
+					<div class="col-xl-7">
+
+						<!-- Horizontal form -->
+						<div id="card" class="card">
+							<div class="card-header header-elements-inline">
+							</div>
+
+							<div class="collapse show">
+								<div class="card-body">
+										<div class="form-group row">
+											<label id="card-label-first" class="col-lg-3 col-form-label">Name : Iresh W.D.</label>
+										</div>
+
+										<div id="gender-lable" class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Male </label>
+										</div>
+
+
+										<div id="age-lable" class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">25</label>
+										</div>
+								</div>
+							</div>
+						</div>
+						<!-- /horizotal form -->
+
+					</div>
+
+					<!-- middle navbar -->
+					<div id="middle-navbar" class="navbar navbar-expand navbar-light px-0 px-lg-3">
+						<div class="overflow-auto overflow-lg-visible scrollbar-hidden flex-1">
+							<ul class="navbar-nav flex-row text-nowrap">
+								<li id="footer-item" class="nav-item">
+									<a href="index.html" class="navbar-nav-link active">
+										<i class="icon-pulse2 mr-2"></i>
+									</a>
+								</li>	
+								<li id="footer-item" class="nav-item">
+									<a href="index.html" class="navbar-nav-link active">
+										<i class="icon-list-numbered mr-2"></i>
+									</a>
+								</li>	
+								<li id="footer-item" class="nav-item">
+									<a href="index.html" class="navbar-nav-link active">
+										<i class="icon-newspaper mr-2"></i>
+									</a>
+								</li>	
+								<li id="footer-item" class="nav-item">
+									<a href="index.html" class="navbar-nav-link active">
+										<i class="icon-history mr-2"></i>
+									</a>
+								</li>						
+							</ul>
+						</div>
+					</div>
+					<!-- /middle navbar -->
+		
+
+					<div class="col-xl-5">
+
+						<!-- Sales stats -->
+						<div id="card" class="card">
+
+								<div class="card">	
+									<div class="card-body">
+										<ul id="tab-body" class="nav nav-tabs nav-tabs-bottom nav-justified">
+											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Drugs <i id="tab-lable" class="icon-folder-plus3 ml-2"></i></a></li>
+											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Tests <i id="tab-lable" class="icon-folder-check ml-2"></i></a></li>
+											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Procedures <i id="tab-lable" class="icon-paste2 ml-2"></i></a></li>
+											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Therapy <i id="tab-lable" class="icon-magic-wand ml-2"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							<div class="card-body py-0">
+
+							</br>
+
+								<div class="form-group row">
+									<label id="card-label-first" class="col-lg-3 col-form-label">Drug</label>
+									<div class="col-lg-9">
+										<input  id="card-input" type="password" class="form-control" placeholder="Search Drug">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label id="card-label" class="col-lg-3 col-form-label">Dose</label>
+									<div class="col-lg-9">
+										<input  id="card-input" type="password" class="form-control" placeholder="Select">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label id="card-label" class="col-lg-3 col-form-label">Freq</label>
+									<div class="col-lg-9">
+										<input  id="card-input" type="password" class="form-control" placeholder="Select">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label id="card-label" class="col-lg-3 col-form-label">Due</label>
+									<div class="col-lg-9">
+										<input  id="card-input" type="password" class="form-control" placeholder="Select">
+									</div>
+								</div>
+							</div>	
+							
+							<!-- Basic datatable -->
+							<div class="card">
+								<table class="table datatable-basic">
+									<thead>
+										<tr>
+											<th id="table-label">ID</th>
+											<th id="table-label">Name</th>
+											<th id="table-label">Dose</th>
+											<th id="table-label">Freq</th>
+											<th id="table-label">Due</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td id="table-label">1</td>
+											<td id="table-label"><a href="#">Enright</a></td>
+											<td id="table-label">Traffic Court Referee</td>
+											<td id="table-label">Traf</td>
+											<td id="table-label">Tr</td>
+										</tr>
+										<tr>
+											<td id="table-label">2</td>
+											<td id="table-label">Weible</td>
+											<td id="table-label"><a href="#">Airline Transport Pilot</a></td>
+											<td id="table-label">We</td>
+											<td id="table-label">Wele</td>
+
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+							<!-- /basic datatable -->
+
+
+						</div>
+						<!-- /sales stats -->
+					</div>
+				</div>
+				<!-- /main charts -->
+
+			</div>
+			<!-- /content area -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+#footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 100;
+}
+/* 
+#middle-navbar {
+    top: -20px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+} */
+
+
+@media screen and (max-width: 480px) {
+
+    #card-title {
+        font-size: 14px;
+        margin-top: -20px;
+    }
+
+    
+    #card-label-first {
+        font-size: 12px;
+        margin-top: -25px;
+    }
+
+    #card-label {
+        font-size: 12px;
+        margin-top: -15px;
+    }
+
+    #gender-button {
+        height: 35px;
+    }
+
+    #gender-button-male {
+        font-size: 12px;
+        width: 70px;
+    }
+
+    #gender-button-female {
+        font-size: 12px;
+        width: 70px;
+    }
+
+    #card {
+        margin-top: -15px;
+    }
+
+    #card-input {
+        font-size: 12px;
+    }
+
+    #name-data {
+        font-size: 12px;
+    }
+
+    #mobile-number {
+        font-size: 12px;
+    }
+
+    #confirm-button {
+        font-size: 12px;
+        /* height: 35px; */
+    }
+
+    #tab-body {
+        margin-left: -20px;
+        margin-right: -20px;
+        margin-top: -10px;
+        margin-bottom: -10px;
+    }
+
+    #tab-button {
+        max-width: 35%;
+        font-size: 10px;
+    }
+
+    #tab-lable {
+        font-size: 10px;
+    }
+
+    #age-group {
+        max-width: 50%;
+    }
+
+    #gender-group {
+        margin-top: -68px;
+        margin-left: 50%;
+    }
+
+    #footer-item {
+        max-width: 30%;
+    }
+
+    #gender-lable {
+        max-width: 50%;
+    }
+
+    #age-lable {
+        margin-top: -33px;
+        margin-left: 50%;
+        margin-bottom: -10px;
+    }
+
+    #middle-navbar {
+        margin-top: -20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 100;
+    }
+
+    #table-label {
+        font-size: 10px;
+        margin-top: -15px;
+    }
+    
+}
