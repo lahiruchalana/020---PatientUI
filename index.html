@@ -448,6 +448,29 @@
 
 
 
+
+		var xhr = new XMLHttpRequest(),
+        patientData = {};
+
+		xhr.overrideMimeType("application/json");
+		xhr.open('GET', 'data/patients.json', true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4 && xhr.status == "200") {
+				var content = JSON.parse(this.response);
+				var	patientArray, i, count, title;
+
+				patientArray = content['patients'];
+				for (i = 0, count = patientArray.length; i < count; i++) {
+					title = patientArray[i]['name'].toLowerCase();
+					patientData[title] = patientArray[i];
+				}
+				console.log(patientData);
+			}
+
+		};
+		xhr.send(null);
+
+
 	</script>
 
 </body>
