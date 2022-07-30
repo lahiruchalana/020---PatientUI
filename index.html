@@ -146,7 +146,7 @@
 											<label id="card-label-first" class="col-lg-3 col-form-label">Mobile</label>
 											<div class="col-lg-9">
 												<div class="input-group">
-													<input id="mobile-number" type="text" class="form-control" placeholder="Right spinner">
+													<input id="mobile-number" type="number" class="form-control" placeholder="Right spinner">
 													<span class="input-group-append">
 														<span class="input-group-text"><i class="icon-spinner2 spinner"></i></span>
 													</span>
@@ -157,7 +157,7 @@
 										<div class="form-group row">
 											<label id="card-label" class="col-lg-3 col-form-label">Name</label>
 											<div class="col-lg-9">
-												<input  id="name-data" type="text" class="form-control">
+												<input  id="name-data" type="text" class="form-control" name="search">
 											</div>
 										</div>
 
@@ -342,17 +342,15 @@
 		patientDetailsForm.addEventListener('submit', function (e) {
 			e.preventDefault();
 
-			var mobileNumber = document.getElementById("mobile-number").value;
+			var mobileNumber = parseInt(document.getElementById("mobile-number").value);
 			var name = document.getElementById("name-data").value;
-			var age = document.getElementById("age-data").value
+			var age = parseInt(document.getElementById("age-data").value);
 
 			var userData = {mobileNumber, titleOfName, name, age, gender}
 
 			console.log(userData);
 
-			// // request send to the userData to API
-
-			// var xhr = new XMLHttpRequest();
+			// var xhr = new XMLHttpRequest();				/* request send to the userData to API */
 			// xhr.open("POST", 'patient.php', true);
 			// xhr.setRequestHeader('Content-Type', 'application/json');
 			// xhr.send(JSON.stringify({
@@ -448,27 +446,57 @@
 
 
 
+		/* starts to load patients.json data to website and create objects array fopr patients */
 
-		var xhr = new XMLHttpRequest(),
-        patientData = {};
+		var xhr = new XMLHttpRequest();
+        var patientDataByMobileNumber = {};
+		var patientArray;
 
 		xhr.overrideMimeType("application/json");
 		xhr.open('GET', 'data/patients.json', true);
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState == 4 && xhr.status == "200") {
 				var content = JSON.parse(this.response);
-				var	patientArray, i, count, title;
+				var	i, count, mobileNumber;
 
-				patientArray = content['patients'];
-				for (i = 0, count = patientArray.length; i < count; i++) {
-					title = patientArray[i]['name'].toLowerCase();
-					patientData[title] = patientArray[i];
+				patientArray = content['patients'];		 						/* if you need patient data without titles use this */
+
+				for (i = 0, count = patientArray.length; i < count; i++) {		/* get patient data with mobile number (for search function to perform) */
+					mobileNumber = patientArray[i]['mobileNumber'];
+					patientDataByMobileNumber[mobileNumber] = patientArray[i];
 				}
-				console.log(patientData);
+
+				console.log(patientArray);
+				console.log(patientDataByMobileNumber);
 			}
 
 		};
 		xhr.send(null);
+
+		/* ends to load patients.json data to website and create objects array fopr patients */
+
+
+
+		/* starts to find existing patients when inputs mobile number */
+
+		patientDetailsForm.oninput = function() {
+			var mobileNumber = parseInt(document.getElementById("mobile-number").value);
+
+			console.log(mobileNumber);
+
+			if (mobileNumber && patientDataByMobileNumber[mobileNumber]) {
+
+				console.log(patientDataByMobileNumber[mobileNumber]);
+				
+				document.getElementById("name-data").value = patientDataByMobileNumber[mobileNumber].name;
+			} else {
+				document.getElementById("name-data").value = "";
+			}
+
+			return false;   	/* must return false to prevent the default form behavior */
+		}
+
+		/* ends to find existing patients when inputs mobile number */
 
 
 	</script>
