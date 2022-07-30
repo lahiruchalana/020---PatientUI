@@ -203,33 +203,14 @@
 	
 									<div class="card-body">
 										<ul id="tab-body" class="nav nav-tabs nav-tabs-bottom nav-justified">
-											<li id="tab-button" class="nav-item dropdown">
-												<a id="tab-lable" href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Vital Signs <i id="tab-lable" class="icon-menu7 ml-2"></i></a>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="No Breastfeeding">No Breastfeeding</a>
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="No liver diseases">No liver diseases</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="No kidney diseases">No kidney diseases</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="No Current Medications">No Current Medications</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="No chronic diseases">No chronic diseases</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="No drug allergy">No drug allergy</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="No Pregnancy">No Pregnancy</a>
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="Pregnancy">Pregnancy</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="Lactation">Lactation</a> 
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="Chronic Liver disease">Chronic Liver disease</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="Chronic Kidney disease">Chronic Kidney disease</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="End stage irreversible pathology">End stage irreversible pathology</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="One year survival prognosis very low">One year survival prognosis very low</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="Functional impairment severe">Functional impairment severe</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="Cognitive impairment severe">Cognitive impairment severe</a>    
-													<a id="tab-lable" class="dropdown-item" data-toggle="tab" value="Therapeutic aim symptom control">Therapeutic aim symptom control</a>
-												</div>
-											</li>
-											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Allergies <i id="tab-lable" class="icon-mention ml-2"></i></a></li>
+											<li id="vital-signs-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link active" data-toggle="tab">Vital Signs <i id="tab-lable" class="icon-menu7 ml-2"></i></a></li>
+											<li id="allergies-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Allergies <i id="tab-lable" class="icon-mention ml-2"></i></a></li>
 											<li id="tab-button" class="nav-item dropdown">
 												<a id="tab-lable" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Other <i id="tab-lable" class="icon-gear ml-2"></i></a>
 												<div class="dropdown-menu dropdown-menu-right">
-													<a href="#justified-right-icon-tab3" class="dropdown-item" data-toggle="tab">Dropdown tab</a>
-													<a href="#justified-right-icon-tab4" class="dropdown-item" data-toggle="tab">Another tab</a>
+													<a href="#justified-right-icon-tab3" class="dropdown-item" data-toggle="tab">Food Allergies</a>
+													<a href="#justified-right-icon-tab4" class="dropdown-item" data-toggle="tab">Other</a>
+													<a href="#justified-right-icon-tab4" class="dropdown-item" data-toggle="tab">Remark</a>
 												</div>
 											</li>
 										</ul>
@@ -237,20 +218,35 @@
 								</div>
 							<div class="card-body py-0">
 
-								<div class="form-group">
-									<label id="card-title" >Multiple select</label>
+								<div id="vital-signs-box" class="form-group">
+									<label id="card-title" >Vital Signs</label>
 									<select multiple="multiple" class="form-control select" data-fouc>
-										<optgroup label="Mountain Time Zone">
-											<option value="AZ" selected>Arizona</option>
-											<option value="CO">Colorado</option>
-											<option value="ID">Idaho</option>
-											<option value="WY">Wyoming</option>
+										<optgroup label="Vital Signs">
+											<option value="No Breastfeeding" selected>No Breastfeeding</option>
+											<option value="No liver diseases" selected>No liver diseases</option>
+											<option value="No kidney diseases">No kidney diseases</option>
+											<option value="No Current Medications">No Current Medications</option>
+											<option value="No chronic diseases">No chronic diseases</option>
+											<option value="No drug allergy">No drug allergy</option>
+											<option value="No Pregnancy">No Pregnancy</option>
+											<option value="Pregnancy">Pregnancy</option>
+											<option value="Lactation">Lactation</option>
+											<option value="Chronic Liver disease">Chronic Liver disease</option>
+											<option value="Chronic Kidney disease">Chronic Kidney disease</option>
+											<option value="End stage irreversible pathology">End stage irreversible pathology</option>
+											<option value="One year survival prognosis very low">One year survival prognosis very low</option>
+											<option value="Functional impairment severe">Functional impairment severe</option>
+											<option value="Cognitive impairment severe">Cognitive impairment severe</option>
+											<option value="Therapeutic aim symptom control">Therapeutic aim symptom control</option>
 										</optgroup>
-										<optgroup label="Central Time Zone">
-											<option value="AL">Alabama</option>
-											<option value="IA" selected>Iowa</option>
-											<option value="KS" selected>Kansas</option>
-											<option value="KY">Kentucky</option>
+									</select>
+								</div>
+
+								<div id="allergies-box" class="form-group">
+									<label id="card-title" >Vital Signs</label>
+									<select multiple="multiple" class="form-control select" data-fouc>
+										<optgroup label="Vital Signs">
+											<option value="feeding" selected>feeding</option>
 										</optgroup>
 									</select>
 								</div>
@@ -321,6 +317,34 @@
 			// }));
 
 		})
+
+		const vitalSignsBox = document.getElementById("vital-signs-box");
+		const vitalSignsBtn = document.getElementById("vital-signs-button");
+		
+		const allergiesBox = document.getElementById("allergies-box");
+		const allergiesBtn = document.getElementById("allergies-button");
+
+		allergiesBox.style.display = 'none';
+
+		vitalSignsBtn.addEventListener('click', function handleClick() {
+			if (vitalSignsBox.style.display === 'none') {
+				vitalSignsBox.style.display = 'block';
+				allergiesBox.style.display = 'none';
+			} 
+
+			vitalSignsBox.style.display = 'block';
+			allergiesBox.style.display = 'none';
+		});
+
+		allergiesBtn.addEventListener('click', function handleClick() {
+			if (allergiesBox.style.display === 'none') {
+				allergiesBox.style.display = 'block';
+				vitalSignsBox.style.display = 'none';
+
+				console.log("clicked allergies");
+			} 
+		});
+
 
 
 	</script>
