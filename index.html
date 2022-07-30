@@ -208,9 +208,9 @@
 											<li id="tab-button" class="nav-item dropdown">
 												<a id="tab-lable" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Other <i id="tab-lable" class="icon-gear ml-2"></i></a>
 												<div class="dropdown-menu dropdown-menu-right">
-													<a href="#justified-right-icon-tab3" class="dropdown-item" data-toggle="tab">Food Allergies</a>
-													<a href="#justified-right-icon-tab4" class="dropdown-item" data-toggle="tab">Other</a>
-													<a href="#justified-right-icon-tab4" class="dropdown-item" data-toggle="tab">Remark</a>
+													<a id="food-allergies-button" href="#justified-right-icon-tab3" class="dropdown-item" data-toggle="tab">Food Allergies</a>
+													<a id="other-button" href="#justified-right-icon-tab4" class="dropdown-item" data-toggle="tab">Other</a>
+													<a id="remark-button" href="#justified-right-icon-tab4" class="dropdown-item" data-toggle="tab">Remark</a>
 												</div>
 											</li>
 										</ul>
@@ -243,13 +243,54 @@
 								</div>
 
 								<div id="allergies-box" class="form-group">
-									<label id="card-title" >Vital Signs</label>
+									<label id="card-title" >Allergies</label>
 									<select multiple="multiple" class="form-control select" data-fouc>
 										<optgroup label="Vital Signs">
-											<option value="feeding" selected>feeding</option>
+											<option value="Amoxicillin" selected>Amoxicillin</option>
+											<option value="Aspirin" >Aspirin</option>
+											<option value="Augmetin" >Augmetin</option>
+											<option value="Cephalexin" >Cephalexin</option>
+											<option value="Cloxacillin" >Cloxacillin</option>
+											<option value="Cloxil" >Cloxil</option>
+											<option value="Coamoxyclay" >Coamoxyclay</option>
+											<option value="Diclofenac" >Diclofenac</option>
+											<option value="Ibuprofen" >Ibuprofen</option>
+											<option value="Mefenamic acid" >Mefenamic acid</option>
+											<option value="Miscellaneous" >Miscellaneous</option>
+											<option value="Penicillins" >Penicillins</option>
+											<option value="Sulpha" >Sulpha</option>
+											<option value="Unknown drug" >Unknown drug</option>
 										</optgroup>
 									</select>
 								</div>
+
+								<div id="food-allergies-box" class="form-group">
+									<label id="card-title" >Food Allergies</label>
+									<div class="form-group row">
+										<div class="col-lg-9">
+											<textarea  id="food-allergies-data" type="text" class="form-control" placeholder="write the food allegeries"></textarea>
+										</div>
+									</div>
+								</div>
+
+								<div id="other-box" class="form-group">
+									<label id="card-title" >Other</label>
+									<div class="form-group row">
+										<div class="col-lg-9">
+											<textarea  id="other-data" type="text" class="form-control" placeholder="write"></textarea>
+										</div>
+									</div>
+								</div>
+
+								<div id="remark-box" class="form-group">
+									<label id="card-title" >Remark</label>
+									<div class="form-group row">
+										<div class="col-lg-9">
+											<textarea  id="remark-data" type="text" class="form-control" placeholder="write"></textarea>
+										</div>
+									</div>
+								</div>
+
 							</div>			 
 						</div>
 						<!-- /sales stats -->
@@ -268,6 +309,8 @@
 
 
 	<script>
+
+		/* starts function to send a object of patient and gender button working */
 
 		var gender;
 		var titleOfName;
@@ -318,32 +361,90 @@
 
 		})
 
+		/* ends function to send a object of patient and gender button working */
+
+
+
+		/* starts function for vital signs, allergies, other comments display */
+
 		const vitalSignsBox = document.getElementById("vital-signs-box");
 		const vitalSignsBtn = document.getElementById("vital-signs-button");
 		
 		const allergiesBox = document.getElementById("allergies-box");
 		const allergiesBtn = document.getElementById("allergies-button");
 
+		const foodAllergiesBox = document.getElementById("food-allergies-box");
+		const foodAllergiesBtn = document.getElementById("food-allergies-button");
+
+		const otherBox = document.getElementById("other-box");
+		const otherBtn = document.getElementById("other-button");
+
+		const remarkBox = document.getElementById("remark-box");
+		const remarkBtn = document.getElementById("remark-button");
+
 		allergiesBox.style.display = 'none';
+		foodAllergiesBox.style.display = 'none';
+		otherBox.style.display = 'none';
+		remarkBox.style.display = 'none';
 
 		vitalSignsBtn.addEventListener('click', function handleClick() {
 			if (vitalSignsBox.style.display === 'none') {
 				vitalSignsBox.style.display = 'block';
 				allergiesBox.style.display = 'none';
+				foodAllergiesBox.style.display = 'none'
+				otherBox.style.display = 'none'
+				remarkBox.style.display = 'none'
 			} 
 
+			// intially vital sign box displayed
 			vitalSignsBox.style.display = 'block';
 			allergiesBox.style.display = 'none';
+			foodAllergiesBox.style.display = 'none'
+			otherBox.style.display = 'none'
+			remarkBox.style.display = 'none'
 		});
 
 		allergiesBtn.addEventListener('click', function handleClick() {
 			if (allergiesBox.style.display === 'none') {
 				allergiesBox.style.display = 'block';
 				vitalSignsBox.style.display = 'none';
-
-				console.log("clicked allergies");
+				foodAllergiesBox.style.display = 'none'
+				otherBox.style.display = 'none'
+				remarkBox.style.display = 'none'
 			} 
 		});
+
+		foodAllergiesBtn.addEventListener('click', function handleClick() {
+			if (foodAllergiesBox.style.display === 'none') {
+				foodAllergiesBox.style.display = 'block';
+				vitalSignsBox.style.display = 'none';
+				allergiesBox.style.display = 'none';
+				otherBox.style.display = 'none'
+				remarkBox.style.display = 'none'
+			} 
+		});
+
+		otherBtn.addEventListener('click', function handleClick() {
+			if (otherBox.style.display === 'none') {
+				otherBox.style.display = 'block';
+				vitalSignsBox.style.display = 'none';
+				allergiesBox.style.display = 'none'
+				foodAllergiesBox.style.display = 'none'
+				remarkBox.style.display = 'none'
+			} 
+		});
+
+		remarkBtn.addEventListener('click', function handleClick() {
+			if (remarkBox.style.display === 'none') {
+				remarkBox.style.display = 'block';
+				vitalSignsBox.style.display = 'none';
+				allergiesBox.style.display = 'none'
+				foodAllergiesBox.style.display = 'none'
+				otherBox.style.display = 'none'
+			} 
+		});
+
+		/* ends function for vital signs, allergies, other comments display */
 
 
 

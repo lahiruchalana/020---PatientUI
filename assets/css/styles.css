@@ -128,5 +128,17 @@
         font-size: 10px;
         margin-top: -15px;
     }
+
+    #food-allergies-data {
+        font-size: 12px;
+    }
+
+    #other-data {
+        font-size: 12px;
+    }
+
+    #remark-data {
+        font-size: 12px;
+    }
     
 }
