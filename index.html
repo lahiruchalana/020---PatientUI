@@ -489,8 +489,34 @@
 				console.log(patientDataByMobileNumber[mobileNumber]);
 				
 				document.getElementById("name-data").value = patientDataByMobileNumber[mobileNumber].name;
+				document.getElementById("age-data").value = patientDataByMobileNumber[mobileNumber].age;
+
+				if (patientDataByMobileNumber[mobileNumber].gender === "female") {
+					$("#gender-button-female").removeClass("btn btn-light");
+					$("#gender-button-female").addClass("btn btn-info active");
+
+					$("#gender-button-male").removeClass("btn btn-info active");
+					$("#gender-button-male").addClass("btn btn-light");
+
+				} else if (patientDataByMobileNumber[mobileNumber].gender === "male") {
+					$("#gender-button-male").removeClass("btn btn-light");
+					$("#gender-button-male").addClass("btn btn-info active");
+
+					$("#gender-button-female").removeClass("btn btn-info active");
+					$("#gender-button-female").addClass("btn btn-light");
+
+				} 
 			} else {
+
 				document.getElementById("name-data").value = "";
+				document.getElementById("age-data").value = "";
+
+				$("#gender-button-female").removeClass("btn btn-info active");
+				$("#gender-button-female").addClass("btn btn-light");
+				
+				$("#gender-button-male").removeClass("btn btn-info active");
+				$("#gender-button-male").addClass("btn btn-light");
+
 			}
 
 			return false;   	/* must return false to prevent the default form behavior */
