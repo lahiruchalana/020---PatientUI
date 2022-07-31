@@ -184,7 +184,7 @@
 											</div>
 										</div>
 										<div class="text-right">
-											<button id="confirm-button" type="submit" class="btn btn-primary">Confirm<i class="icon-paperplane ml-2"></i></button>
+											<button id="new-patient-button" type="submit" class="btn btn-primary">New Patient<i class="icon-paperplane ml-2"></i></button>
 										</div>
 									</form>
 								</div>
@@ -310,28 +310,50 @@
 
 	<script>
 
+		/* starts -- defines common functions (using over the script file) */
+
+		function genderBtnChangeForMale() {
+			$("#gender-button-male").removeClass("btn btn-light");
+			$("#gender-button-male").addClass("btn btn-info active");
+
+			$("#gender-button-female").removeClass("btn btn-info active");
+			$("#gender-button-female").addClass("btn btn-light");
+		}
+
+		function genderBtnChangeForFemale() {
+			$("#gender-button-female").removeClass("btn btn-light");
+			$("#gender-button-female").addClass("btn btn-info active");
+
+			$("#gender-button-male").removeClass("btn btn-info active");
+			$("#gender-button-male").addClass("btn btn-light");
+		}
+
+		function initialGenderButton() {
+			$("#gender-button-female").removeClass("btn btn-info active");
+			$("#gender-button-female").addClass("btn btn-light");
+			
+			$("#gender-button-male").removeClass("btn btn-info active");
+			$("#gender-button-male").addClass("btn btn-light");
+		}
+
+		/* ends -- defines common functions (using over the script file) */
+
+
+
 		/* starts function to send a object of patient and gender button working */
 
 		var gender;
 		var titleOfName;
 
 		$("#gender-button-female").click(function(){
-			$(this).removeClass("btn btn-light");
-			$(this).addClass("btn btn-info active");
-
-			$("#gender-button-male").removeClass("btn btn-info active");
-			$("#gender-button-male").addClass("btn btn-light");
+			genderBtnChangeForFemale();
 
 			gender = "female";
 			titleOfName = "Mrs.";
 		});
 
 		$("#gender-button-male").click(function(){
-			$(this).removeClass("btn btn-light");
-			$(this).addClass("btn btn-info active");
-
-			$("#gender-button-female").removeClass("btn btn-info active");
-			$("#gender-button-female").addClass("btn btn-light");
+			genderBtnChangeForMale();
 
 			gender = "male";
 			titleOfName = "Mr."
@@ -479,6 +501,8 @@
 
 		/* starts to find existing patients when inputs mobile number */
 
+		var newPatientBtn = document.getElementById("new-patient-button");
+
 		patientDetailsForm.oninput = function() {
 			var mobileNumber = parseInt(document.getElementById("mobile-number").value);
 
@@ -490,32 +514,22 @@
 				
 				document.getElementById("name-data").value = patientDataByMobileNumber[mobileNumber].name;
 				document.getElementById("age-data").value = patientDataByMobileNumber[mobileNumber].age;
+				newPatientBtn.style.display = 'none';
 
 				if (patientDataByMobileNumber[mobileNumber].gender === "female") {
-					$("#gender-button-female").removeClass("btn btn-light");
-					$("#gender-button-female").addClass("btn btn-info active");
-
-					$("#gender-button-male").removeClass("btn btn-info active");
-					$("#gender-button-male").addClass("btn btn-light");
+					genderBtnChangeForFemale();
 
 				} else if (patientDataByMobileNumber[mobileNumber].gender === "male") {
-					$("#gender-button-male").removeClass("btn btn-light");
-					$("#gender-button-male").addClass("btn btn-info active");
-
-					$("#gender-button-female").removeClass("btn btn-info active");
-					$("#gender-button-female").addClass("btn btn-light");
+					genderBtnChangeForMale();
 
 				} 
 			} else {
+				newPatientBtn.style.display = 'block';
 
-				document.getElementById("name-data").value = "";
-				document.getElementById("age-data").value = "";
-
-				$("#gender-button-female").removeClass("btn btn-info active");
-				$("#gender-button-female").addClass("btn btn-light");
-				
-				$("#gender-button-male").removeClass("btn btn-info active");
-				$("#gender-button-male").addClass("btn btn-light");
+				// document.getElementById("name-data").value = "";   /* when mobile number is not exist you need to create a new user, so execute that you can not use this "else" statement */   
+				// document.getElementById("age-data").value = "";		/* when you found a user using mobile number and then the input fields automatically filled then - */
+																		/* - you change again the number then you need to make empty input fields but it can not perform in this format */
+				// initialGenderButton();									
 
 			}
 
