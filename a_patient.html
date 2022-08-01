@@ -210,7 +210,11 @@
 										<div class="form-group row">
 											<label id="card-label-first" class="col-lg-3 col-form-label">Drug</label>
 											<div class="col-lg-9">
-												<input  id="drug-data" type="text" class="form-control" placeholder="Search Drug">
+												<input  id="drug-data" list="drug-list" type="text" class="form-control" placeholder="Search Drug">
+												<datalist id="drug-list">
+													<!-- <option value="uhbckia">fwawfcv</option>
+													<option value="vkckaia">fafa</option> -->
+												</datalist>
 											</div>
 										</div>
 
@@ -312,7 +316,7 @@
 
 
 
-		/* starts to load patients.json data to website and create objects array fopr patients */
+		/* starts to load drugs.json data to website and create objects array for drugs */
 
 		var xhr = new XMLHttpRequest();
         var drugDataByDrugName = {};
@@ -325,9 +329,9 @@
 				var content = JSON.parse(this.response);
 				var	i, count, drugName;
 
-				drugArray = content['drugs'];		 						/* if you need patient data without titles use this */
+				drugArray = content['drugs'];		 						/* if you need drugs data without name use this */
 
-				for (i = 0, count = drugArray.length; i < count; i++) {		/* get patient data with mobile number (for search function to perform) */
+				for (i = 0, count = drugArray.length; i < count; i++) {		/* get drugs data with name (for search function to perform) */
 					drugName = drugArray[i]['drugName'];
 					drugDataByDrugName[drugName] = drugArray[i];
 				}
@@ -339,7 +343,27 @@
 		};
 		xhr.send(null);
 
-		/* ends to load patients.json data to website and create objects array fopr patients */
+		/* ends to load drugs.json data to website and create objects array for drugs */
+
+
+
+		/* starts added drugs.json data to options of datalist in Drug input field */
+
+		function getDrugsToDrugField() {
+			var url, drugOption;
+			url = 'data/drugs.json';
+
+			$.getJSON(url, function(data) {
+				$(data.drugs).each(function() {     					/* populate the drugs datalist */
+					drugOption = `<option value="${this.drugName}">${this.drugName}</option>`;
+					$('#drug-list').append(drugOption);
+				});
+			});
+		}
+
+		window.onload = getDrugsToDrugField();
+
+		/* ends added drugs.json data to options of datalist in Drug input field */
 
 	</script>
 
