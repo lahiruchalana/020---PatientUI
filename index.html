@@ -63,6 +63,11 @@
 		</div>
 
 		<div class="navbar-brand wmin-0 mr-lg-5">
+			<a id="header-patient-name" href="index.html" class="d-inline-block"></a>
+		</div>
+		
+
+		<div class="navbar-brand wmin-0 mr-lg-5">
 			<a href="index.html" class="d-inline-block">
 				<img src="global_assets/images/logo_light.png" class="d-none d-sm-block" alt="">
 				<img src="global_assets/images/logo_icon_light.png" class="d-sm-none" alt="">
@@ -385,10 +390,23 @@
 				swal("Gender?" , `Select Patient Gender`, "error");
 			}
 
-			if (mobileNumberStr != "" && name != "" && gender != undefined) {
+			if (mobileNumberStr != "" && name != "" && gender != undefined && mobileNumber < 1000000000) {
 				console.log(userData);
 				newPatientBtn.style.display = 'none';
 				swal("New Patient Created!" , `Patient: ${titleOfName} ${name}`, "success");
+
+				/* starts set patient data to local storage */
+
+				window.localStorage.setItem("patientMobile", mobileNumber)
+				window.localStorage.setItem("patientName", name)
+				window.localStorage.setItem("patientAge", age)
+				window.localStorage.setItem("patientTitle", titleOfName)
+				window.localStorage.setItem("patientGender", gender)
+
+				/* ends set patient data to local storage */
+
+				document.getElementById("header-patient-name").innerHTML = `${titleOfName} ${name}`; 
+				
 			}
 
 			/* ends entering valid data */
@@ -536,6 +554,18 @@
 				newPatientBtn.style.display = 'none';
 
 				swal("Patient Available!" , `Patient: ${patientDataByMobileNumber[mobileNumber].titleOfName} ${patientDataByMobileNumber[mobileNumber].name}`, "success");
+
+				/* starts set patient data to local storage */
+
+				window.localStorage.setItem("patientMobile", patientDataByMobileNumber[mobileNumber].mobileNumber)
+				window.localStorage.setItem("patientName", patientDataByMobileNumber[mobileNumber].name)
+				window.localStorage.setItem("patientAge", patientDataByMobileNumber[mobileNumber].age)
+				window.localStorage.setItem("patientTitle", patientDataByMobileNumber[mobileNumber].titleOfName)
+				window.localStorage.setItem("patientGender", patientDataByMobileNumber[mobileNumber].gender)
+
+				/* ends set patient data to local storage */
+
+				document.getElementById("header-patient-name").innerHTML = `${patientDataByMobileNumber[mobileNumber].titleOfName} ${patientDataByMobileNumber[mobileNumber].name}`; 
 
 				if (patientDataByMobileNumber[mobileNumber].gender === "female") {
 					genderBtnChangeForFemale();

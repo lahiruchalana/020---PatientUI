@@ -140,5 +140,11 @@
     #remark-data {
         font-size: 12px;
     }
+
+    #header-patient-name {
+        font-size: 12px;
+        color: white;
+        margin-right: 10px;
+    }
     
 }
