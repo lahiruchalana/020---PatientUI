@@ -204,7 +204,7 @@
 								
 							<!-- Horizontal form -->
 							<div class="collapse show">
-								<form id="patient-details-form">
+								<form id="drug-details-form">
 									<div class="card-body py-0">
 										</br>
 										<div class="form-group row">
@@ -212,8 +212,6 @@
 											<div class="col-lg-9">
 												<input  id="drug-data" list="drug-list" type="text" class="form-control" placeholder="Search Drug">
 												<datalist id="drug-list">
-													<!-- <option value="uhbckia">fwawfcv</option>
-													<option value="vkckaia">fafa</option> -->
 												</datalist>
 											</div>
 										</div>
@@ -364,6 +362,23 @@
 		window.onload = getDrugsToDrugField();
 
 		/* ends added drugs.json data to options of datalist in Drug input field */
+
+
+		var drugDetailsForm = document.getElementById("drug-details-form");
+
+		drugDetailsForm.oninput = function() {
+			var drugNameInDrugField = document.getElementById("drug-data").value;
+
+			window.localStorage.setItem("drugName", drugNameInDrugField)
+			
+			if (drugNameInDrugField && drugDataByDrugName[drugName]) {
+				document.getElementById("dose-data").value = drugDataByDrugName[drugName].defaultDose;
+
+				console.log(drugDataByDrugName[drugName].defaultDose);
+			}
+		}
+
+
 
 	</script>
 
