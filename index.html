@@ -377,6 +377,8 @@
 
 			if (mobileNumberStr === "") {
 				swal("Mobile Number?", 'Enter Mobile Number', "error")
+			} else if (mobileNumber >= 1000000000) {
+				swal("Not a Valid Mobile Number!", 'Enter a Valid Mobile Number', "error")
 			} else if (name === "") {
 				swal("Name?" , `Enter Patient Name`, "error");
 			} else if (gender === undefined) {
@@ -386,11 +388,10 @@
 			if (mobileNumberStr != "" && name != "" && gender != undefined) {
 				console.log(userData);
 				newPatientBtn.style.display = 'none';
-				swal("New Patient Created!" , `Patient: ${name}`, "success");
+				swal("New Patient Created!" , `Patient: ${titleOfName} ${name}`, "success");
 			}
 
 			/* ends entering valid data */
-
 
 			// var xhr = new XMLHttpRequest();				/* request send to the userData to API */
 			// xhr.open("POST", 'patient.php', true);
@@ -534,7 +535,7 @@
 				document.getElementById("age-data").value = patientDataByMobileNumber[mobileNumber].age;
 				newPatientBtn.style.display = 'none';
 
-				swal("Patient Available!" , `${patientDataByMobileNumber[mobileNumber].name}`, "success");
+				swal("Patient Available!" , `Patient: ${patientDataByMobileNumber[mobileNumber].titleOfName} ${patientDataByMobileNumber[mobileNumber].name}`, "success");
 
 				if (patientDataByMobileNumber[mobileNumber].gender === "female") {
 					genderBtnChangeForFemale();
