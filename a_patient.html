@@ -191,48 +191,57 @@
 						<!-- Sales stats -->
 						<div id="card" class="card">
 
-								<div class="card">	
-									<div class="card-body">
-										<ul id="tab-body" class="nav nav-tabs nav-tabs-bottom nav-justified">
-											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Drugs <i id="tab-lable" class="icon-folder-plus3 ml-2"></i></a></li>
-											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Tests <i id="tab-lable" class="icon-folder-check ml-2"></i></a></li>
-											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Procedures <i id="tab-lable" class="icon-paste2 ml-2"></i></a></li>
-											<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Therapy <i id="tab-lable" class="icon-magic-wand ml-2"></i></a></li>
-										</ul>
-									</div>
+							<div class="card">	
+								<div class="card-body">
+									<ul id="tab-body" class="nav nav-tabs nav-tabs-bottom nav-justified">
+										<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Drugs <i id="tab-lable" class="icon-folder-plus3 ml-2"></i></a></li>
+										<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Tests <i id="tab-lable" class="icon-folder-check ml-2"></i></a></li>
+										<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Procedures <i id="tab-lable" class="icon-paste2 ml-2"></i></a></li>
+										<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Therapy <i id="tab-lable" class="icon-magic-wand ml-2"></i></a></li>
+									</ul>
 								</div>
-							<div class="card-body py-0">
+							</div>
+								
+							<!-- Horizontal form -->
+							<div class="collapse show">
+								<form id="patient-details-form">
+									<div class="card-body py-0">
+										</br>
+										<div class="form-group row">
+											<label id="card-label-first" class="col-lg-3 col-form-label">Drug</label>
+											<div class="col-lg-9">
+												<input  id="drug-data" type="text" class="form-control" placeholder="Search Drug">
+											</div>
+										</div>
 
-							</br>
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Dose</label>
+											<div class="col-lg-9">
+												<input  id="dose-data" type="number" class="form-control" placeholder="Select">
+											</div>
+										</div>
 
-								<div class="form-group row">
-									<label id="card-label-first" class="col-lg-3 col-form-label">Drug</label>
-									<div class="col-lg-9">
-										<input  id="card-input" type="password" class="form-control" placeholder="Search Drug">
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Freq</label>
+											<div class="col-lg-9">
+												<input  id="freq-data" type="text" class="form-control" placeholder="Select">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Due</label>
+											<div class="col-lg-9">
+												<input  id="due-data" type="number" class="form-control" placeholder="Select">
+											</div>
+										</div>
+									</div>	
+									<div class="text-center">
+										<button id="add-drug-button" type="submit" class="btn btn-primary" style="background-color: rgb(89, 5, 168);">Add Drug<i class="icon-paperplane ml-2"></i></button>
 									</div>
-								</div>
-
-								<div class="form-group row">
-									<label id="card-label" class="col-lg-3 col-form-label">Dose</label>
-									<div class="col-lg-9">
-										<input  id="card-input" type="password" class="form-control" placeholder="Select">
-									</div>
-								</div>
-
-								<div class="form-group row">
-									<label id="card-label" class="col-lg-3 col-form-label">Freq</label>
-									<div class="col-lg-9">
-										<input  id="card-input" type="password" class="form-control" placeholder="Select">
-									</div>
-								</div>
-
-								<div class="form-group row">
-									<label id="card-label" class="col-lg-3 col-form-label">Due</label>
-									<div class="col-lg-9">
-										<input  id="card-input" type="password" class="form-control" placeholder="Select">
-									</div>
-								</div>
-							</div>	
+								</form>
+							</div>
+							<br/>
+							<!-- /horizotal form -->
 							
 							<!-- Basic datatable -->
 							<div class="card">
@@ -300,6 +309,37 @@
 		document.getElementById("page-two-patient-gender").innerHTML = `Gender: ${patientGender}`;
 
 		/* ends display patient details */
+
+
+
+		/* starts to load patients.json data to website and create objects array fopr patients */
+
+		var xhr = new XMLHttpRequest();
+        var drugDataByDrugName = {};
+		var drugArray;
+
+		xhr.overrideMimeType("application/json");
+		xhr.open('GET', 'data/drugs.json', true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4 && xhr.status == "200") {
+				var content = JSON.parse(this.response);
+				var	i, count, drugName;
+
+				drugArray = content['drugs'];		 						/* if you need patient data without titles use this */
+
+				for (i = 0, count = drugArray.length; i < count; i++) {		/* get patient data with mobile number (for search function to perform) */
+					drugName = drugArray[i]['drugName'];
+					drugDataByDrugName[drugName] = drugArray[i];
+				}
+
+				console.log(drugArray);
+				console.log(drugDataByDrugName);
+			}
+
+		};
+		xhr.send(null);
+
+		/* ends to load patients.json data to website and create objects array fopr patients */
 
 	</script>
 

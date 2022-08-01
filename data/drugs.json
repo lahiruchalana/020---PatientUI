@@ -1,0 +1,41 @@
+{
+    "title":    "Drugs",
+    "drugs":   [
+        {
+            "drugName": "Arcillin (Cloxacillin Sodium) - INJECTION", 
+            "defaultDose": 250, 
+            "defaultFreq": "bd", 
+            "defaultDue": 2
+        },
+        {
+            "drugName": "Hyd () - Tablet", 
+            "defaultDose": 200, 
+            "defaultFreq": "qds", 
+            "defaultDue": 3
+        },
+        {
+            "drugName": "Unimol (Ibuprofen) - TABLETS", 
+            "defaultDose": 50, 
+            "defaultFreq": "bd", 
+            "defaultDue": 1
+        },
+        {
+            "drugName": "Gresiofulvin () - Tablet", 
+            "defaultDose": 20, 
+            "defaultFreq": "bd", 
+            "defaultDue": 2
+        },
+        {
+            "drugName": "Climycin,150 (Clindamycin Hydrochloride) - CAPSULES", 
+            "defaultDose": 300, 
+            "defaultFreq": "tds", 
+            "defaultDue": 6
+        },
+        {
+            "drugName": "Citanew (Escitalopram Oxalate) - TABLETS", 
+            "defaultDose": 400, 
+            "defaultFreq": "bd", 
+            "defaultDue": 3
+        }
+    ]
+}

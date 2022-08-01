@@ -165,5 +165,21 @@
     #footer-icon {
         color: rgb(89, 5, 168);
     }
+
+    #drug-data {
+        font-size: 12px;
+    }
+
+    #dose-data {
+        font-size: 12px;
+    }
+
+    #freq-data {
+        font-size: 12px;
+    }
+
+    #due-data {
+        font-size: 12px;
+    }
     
 }
