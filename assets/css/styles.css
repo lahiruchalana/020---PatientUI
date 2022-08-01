@@ -161,5 +161,9 @@
         font-size: 12px;
         margin-top: -15px;
     }
+
+    #footer-icon {
+        color: rgb(89, 5, 168);
+    }
     
 }
