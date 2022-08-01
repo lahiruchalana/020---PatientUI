@@ -6,42 +6,42 @@
             "titleOfName": "Mr.", 
             "name": "Lahiru Chalana", 
             "age": 24, 
-            "gender": "male"
+            "gender": "Male"
         },
         {
             "mobileNumber": 712224444, 
             "titleOfName": "Mrs.", 
             "name": "Shashini Imasha", 
             "age": 35, 
-            "gender": "female"
+            "gender": "Female"
         },
         {
-            "mobileNumber": 778542159, 
+            "mobileNumber": 771111111, 
             "titleOfName": "Mr.", 
             "name": "Isuru Maldeniya", 
             "age": 25, 
-            "gender": "male"
+            "gender": "Male"
         },
         {
-            "mobileNumber": 768954212, 
+            "mobileNumber": 762222222, 
             "titleOfName": "Mr.", 
             "name": "Kasun Padmilar", 
             "age": 26, 
-            "gender": "male"
+            "gender": "Male"
         },
         {
-            "mobileNumber": 711125410, 
+            "mobileNumber": 719999999, 
             "titleOfName": "Mrs.", 
             "name": "Pawani Saranya", 
             "age": 28, 
-            "gender": "female"
+            "gender": "Female"
         },
         {
             "mobileNumber": 775843654, 
             "titleOfName": "Mrs.", 
             "name": "Hashani Imasha", 
             "age": 25, 
-            "gender": "female"
+            "gender": "Female"
         }
     ]
 }

@@ -355,14 +355,14 @@
 		$("#gender-button-female").click(function(){
 			genderBtnChangeForFemale();
 
-			gender = "female";
+			gender = "Female";
 			titleOfName = "Mrs.";
 		});
 
 		$("#gender-button-male").click(function(){
 			genderBtnChangeForMale();
 
-			gender = "male";
+			gender = "Male";
 			titleOfName = "Mr."
 		});
 
@@ -567,10 +567,10 @@
 
 				document.getElementById("header-patient-name").innerHTML = `${patientDataByMobileNumber[mobileNumber].titleOfName} ${patientDataByMobileNumber[mobileNumber].name}`; 
 
-				if (patientDataByMobileNumber[mobileNumber].gender === "female") {
+				if (patientDataByMobileNumber[mobileNumber].gender === "Female") {
 					genderBtnChangeForFemale();
 
-				} else if (patientDataByMobileNumber[mobileNumber].gender === "male") {
+				} else if (patientDataByMobileNumber[mobileNumber].gender === "Male") {
 					genderBtnChangeForMale();
 
 				} 

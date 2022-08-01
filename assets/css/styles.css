@@ -146,5 +146,20 @@
         color: white;
         margin-right: 10px;
     }
+
+    #page-two-patient-name {
+        font-size: 12px;
+        margin-top: -25px;
+    }
+
+    #page-two-patient-gender {
+        font-size: 12px;
+        margin-top: -15px;
+    }
+
+    #page-two-patient-age {
+        font-size: 12px;
+        margin-top: -15px;
+    }
     
 }

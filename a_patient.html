@@ -61,6 +61,10 @@
 		</div>
 
 		<div class="navbar-brand wmin-0 mr-lg-5">
+			<a id="header-patient-name" href="index.html" class="d-inline-block"></a>
+		</div>
+
+		<div class="navbar-brand wmin-0 mr-lg-5">
 			<a href="index.html" class="d-inline-block">
 				<img src="global_assets/images/logo_light.png" class="d-none d-sm-block" alt="">
 				<img src="global_assets/images/logo_icon_light.png" class="d-sm-none" alt="">
@@ -135,16 +139,15 @@
 							<div class="collapse show">
 								<div class="card-body">
 										<div class="form-group row">
-											<label id="card-label-first" class="col-lg-3 col-form-label">Name : Iresh W.D.</label>
+											<label id="page-two-patient-name" class="col-lg-3 col-form-label">Name :</label>
 										</div>
 
 										<div id="gender-lable" class="form-group row">
-											<label id="card-label" class="col-lg-3 col-form-label">Male </label>
+											<label id="page-two-patient-gender" class="col-lg-3 col-form-label">Gender: </label>
 										</div>
 
-
 										<div id="age-lable" class="form-group row">
-											<label id="card-label" class="col-lg-3 col-form-label">25</label>
+											<label id="page-two-patient-age" class="col-lg-3 col-form-label">Age: </label>
 										</div>
 								</div>
 							</div>
@@ -281,6 +284,24 @@
 
 	</div>
 	<!-- /page content -->
+
+	<script>
+
+		/* starts display patient details */
+
+		let patientName = localStorage.getItem("patientName");
+		let patientTitle = localStorage.getItem("patientTitle");
+		let patientAge = localStorage.getItem("patientAge");
+		let patientGender = localStorage.getItem("patientGender");
+
+		document.getElementById("header-patient-name").innerHTML = `${patientTitle} ${patientName}`;
+		document.getElementById("page-two-patient-name").innerHTML = `${patientTitle} ${patientName}`;
+		document.getElementById("page-two-patient-age").innerHTML = `Age: ${patientAge}`;
+		document.getElementById("page-two-patient-gender").innerHTML = `Gender: ${patientGender}`;
+
+		/* ends display patient details */
+
+	</script>
 
 </body>
 </html>
