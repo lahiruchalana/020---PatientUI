@@ -38,7 +38,6 @@
 	<script src="global_assets/js/demo_charts/pages/dashboard/light/bullets.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	
 
 	<script src="global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
 	<script src="global_assets/js/plugins/forms/selects/select2.min.js"></script>
@@ -46,6 +45,8 @@
 
 	<script src="global_assets/js/demo_pages/form_input_groups.js"></script>
 	<script src="global_assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<!-- /theme JS files -->
 
 </head>
@@ -344,6 +345,7 @@
 
 		var gender;
 		var titleOfName;
+		var newPatientBtn = document.getElementById("new-patient-button");
 
 		$("#gender-button-female").click(function(){
 			genderBtnChangeForFemale();
@@ -364,13 +366,31 @@
 		patientDetailsForm.addEventListener('submit', function (e) {
 			e.preventDefault();
 
+			var mobileNumberStr = document.getElementById("mobile-number").value;
 			var mobileNumber = parseInt(document.getElementById("mobile-number").value);
 			var name = document.getElementById("name-data").value;
 			var age = parseInt(document.getElementById("age-data").value);
 
 			var userData = {mobileNumber, titleOfName, name, age, gender}
+			
+			/* starts entering valid data */
 
-			console.log(userData);
+			if (mobileNumberStr === "") {
+				swal("Mobile Number?", 'Enter Mobile Number', "error")
+			} else if (name === "") {
+				swal("Name?" , `Enter Patient Name`, "error");
+			} else if (gender === undefined) {
+				swal("Gender?" , `Select Patient Gender`, "error");
+			}
+
+			if (mobileNumberStr != "" && name != "" && gender != undefined) {
+				console.log(userData);
+				newPatientBtn.style.display = 'none';
+				swal("New Patient Created!" , `Patient: ${name}`, "success");
+			}
+
+			/* ends entering valid data */
+
 
 			// var xhr = new XMLHttpRequest();				/* request send to the userData to API */
 			// xhr.open("POST", 'patient.php', true);
@@ -501,8 +521,6 @@
 
 		/* starts to find existing patients when inputs mobile number */
 
-		var newPatientBtn = document.getElementById("new-patient-button");
-
 		patientDetailsForm.oninput = function() {
 			var mobileNumber = parseInt(document.getElementById("mobile-number").value);
 
@@ -515,6 +533,8 @@
 				document.getElementById("name-data").value = patientDataByMobileNumber[mobileNumber].name;
 				document.getElementById("age-data").value = patientDataByMobileNumber[mobileNumber].age;
 				newPatientBtn.style.display = 'none';
+
+				swal("Patient Available!" , `${patientDataByMobileNumber[mobileNumber].name}`, "success");
 
 				if (patientDataByMobileNumber[mobileNumber].gender === "female") {
 					genderBtnChangeForFemale();
