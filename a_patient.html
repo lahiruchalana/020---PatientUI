@@ -364,19 +364,54 @@
 		/* ends added drugs.json data to options of datalist in Drug input field */
 
 
-		var drugDetailsForm = document.getElementById("drug-details-form");
 
-		drugDetailsForm.oninput = function() {
+		/* starts autofill default data of drugs */
+
+		var drugNameController = document.getElementById("drug-data");
+
+		drugNameController.oninput = function() {
 			var drugNameInDrugField = document.getElementById("drug-data").value;
 
 			window.localStorage.setItem("drugName", drugNameInDrugField)
-			
-			if (drugNameInDrugField && drugDataByDrugName[drugName]) {
-				document.getElementById("dose-data").value = drugDataByDrugName[drugName].defaultDose;
 
-				console.log(drugDataByDrugName[drugName].defaultDose);
+			console.log(drugNameInDrugField);
+			console.log(drugDataByDrugName[drugNameInDrugField]);
+			
+			if (drugNameInDrugField && drugDataByDrugName[drugNameInDrugField]) {
+				document.getElementById("dose-data").value = drugDataByDrugName[drugNameInDrugField].defaultDose;
+				document.getElementById("freq-data").value = drugDataByDrugName[drugNameInDrugField].defaultFreq;
+				document.getElementById("due-data").value = drugDataByDrugName[drugNameInDrugField].defaultDue;
 			}
+
 		}
+
+		/* ends autofill default data of drugs */
+
+
+
+		/* starts create new drug object using drug data, and set those drug object to patient's drug array (drugOfPatient) */
+
+		var drugDetailsForm = document.getElementById("drug-details-form");
+		var drugsOfPatient = [];	/* all the drugs data of a particular patient */
+		var drugObject = {};	/* drug object with drugName, drugDose, drugFreq, drugDue and other allergies or some data */
+		
+		drugDetailsForm.addEventListener("submit", function(e) {
+			e.preventDefault();
+			
+			var drugNameInDrugField = document.getElementById("drug-data").value;
+			var drugDoseInDoseField = document.getElementById("dose-data").value;
+			var drugFreqInFreqField = document.getElementById("freq-data").value;
+			var drugDueInDueField = document.getElementById("due-data").value;
+
+			drugObject = {drugNameInDrugField, drugDoseInDoseField, drugFreqInFreqField, drugDueInDueField }
+
+			drugsOfPatient.push(drugObject);
+
+			console.log(drugObject);
+			console.log(drugsOfPatient);
+		})
+
+		/* ends create new drug object using drug data, and set those drug object to patient's drug array (drugOfPatient) */
 
 
 
