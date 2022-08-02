@@ -39,12 +39,18 @@
 	<script src="global_assets/js/demo_charts/pages/dashboard/light/pies.js"></script>
 	<script src="global_assets/js/demo_charts/pages/dashboard/light/bullets.js"></script>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 	<script src="global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
 	<script src="global_assets/js/plugins/forms/selects/select2.min.js"></script>
 	<script src="global_assets/js/demo_pages/form_select2.js"></script>
 
 	<script src="global_assets/js/demo_pages/form_input_groups.js"></script>
 	<script src="global_assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+
+	<!-- swal - sweet alert library -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	<!-- /theme JS files -->
 
 </head>
@@ -194,16 +200,16 @@
 							<div class="card">	
 								<div class="card-body">
 									<ul id="tab-body" class="nav nav-tabs nav-tabs-bottom nav-justified">
-										<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Drugs <i id="tab-lable" class="icon-folder-plus3 ml-2"></i></a></li>
-										<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Tests <i id="tab-lable" class="icon-folder-check ml-2"></i></a></li>
-										<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Procedures <i id="tab-lable" class="icon-paste2 ml-2"></i></a></li>
-										<li id="tab-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Therapy <i id="tab-lable" class="icon-magic-wand ml-2"></i></a></li>
+										<li id="drugs-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link active" data-toggle="tab">Drugs <i id="tab-lable" class="icon-folder-plus3 ml-2"></i></a></li>
+										<li id="tests-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Tests <i id="tab-lable" class="icon-folder-check ml-2"></i></a></li>
+										<li id="procedures-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Procedures <i id="tab-lable" class="icon-paste2 ml-2"></i></a></li>
+										<li id="therapy-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Therapy <i id="tab-lable" class="icon-magic-wand ml-2"></i></a></li>
 									</ul>
 								</div>
 							</div>
 								
 							<!-- Horizontal form -->
-							<div class="collapse show">
+							<div class="collapse show" id="drugs-box">
 								<form id="drug-details-form">
 									<div class="card-body py-0">
 										</br>
@@ -252,8 +258,164 @@
 										<button id="add-drug-button" type="submit" class="btn btn-primary" style="background-color: rgb(89, 5, 168);">Add Drug<i class="icon-paperplane ml-2"></i></button>
 									</div>
 								</form>
+								<br/>
 							</div>
-							<br/>
+
+							<div class="collapse show" id="tests-box">
+								<form id="drug-details-form">
+									<div class="card-body py-0">
+										</br>
+										<div class="form-group row">
+											<label id="card-label-first" class="col-lg-3 col-form-label">Test</label>
+											<div class="col-lg-9">
+												<input  id="drug-data" list="drug-list" type="text" class="form-control" placeholder="Search Drug">
+												<datalist id="drug-list">
+												</datalist>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Dose</label>
+											<div class="col-lg-9">
+												<input  id="dose-data" type="number" class="form-control" placeholder="Select">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Freq</label>
+											<div class="col-lg-9">
+												<input  id="freq-data" list="freq-list" type="text" class="form-control" placeholder="Select">
+												<datalist id="freq-list">
+													<option value="bd">bd</option>
+													<option value="tds">tds</option>
+													<option value="mane">mane</option>
+													<option value="nocte">nocte</option>
+													<option value="qds">qds</option>
+													<option value="daily">daily</option>
+													<option value="sos">sos</option>
+													<option value="eod">eod</option>
+													<option value="stat">stat</option>
+												</datalist>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Due</label>
+											<div class="col-lg-9">
+												<input  id="due-data" type="number" class="form-control" placeholder="Select">
+											</div>
+										</div>
+									</div>	
+									<div class="text-center">
+										<button id="add-drug-button" type="submit" class="btn btn-primary" style="background-color: rgb(89, 5, 168);">Add Drug<i class="icon-paperplane ml-2"></i></button>
+									</div>
+								</form>
+								<br/>
+							</div>
+
+							<div class="collapse show" id="procedures-box">
+								<form id="drug-details-form">
+									<div class="card-body py-0">
+										</br>
+										<div class="form-group row">
+											<label id="card-label-first" class="col-lg-3 col-form-label">Procedure</label>
+											<div class="col-lg-9">
+												<input  id="drug-data" list="drug-list" type="text" class="form-control" placeholder="Search Drug">
+												<datalist id="drug-list">
+												</datalist>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Dose</label>
+											<div class="col-lg-9">
+												<input  id="dose-data" type="number" class="form-control" placeholder="Select">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Freq</label>
+											<div class="col-lg-9">
+												<input  id="freq-data" list="freq-list" type="text" class="form-control" placeholder="Select">
+												<datalist id="freq-list">
+													<option value="bd">bd</option>
+													<option value="tds">tds</option>
+													<option value="mane">mane</option>
+													<option value="nocte">nocte</option>
+													<option value="qds">qds</option>
+													<option value="daily">daily</option>
+													<option value="sos">sos</option>
+													<option value="eod">eod</option>
+													<option value="stat">stat</option>
+												</datalist>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Due</label>
+											<div class="col-lg-9">
+												<input  id="due-data" type="number" class="form-control" placeholder="Select">
+											</div>
+										</div>
+									</div>	
+									<div class="text-center">
+										<button id="add-drug-button" type="submit" class="btn btn-primary" style="background-color: rgb(89, 5, 168);">Add Drug<i class="icon-paperplane ml-2"></i></button>
+									</div>
+								</form>
+								<br/>
+							</div>
+
+							<div class="collapse show" id="therapy-box">
+								<form id="drug-details-form">
+									<div class="card-body py-0">
+										</br>
+										<div class="form-group row">
+											<label id="card-label-first" class="col-lg-3 col-form-label">Therapy</label>
+											<div class="col-lg-9">
+												<input  id="drug-data" list="drug-list" type="text" class="form-control" placeholder="Search Drug">
+												<datalist id="drug-list">
+												</datalist>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Dose</label>
+											<div class="col-lg-9">
+												<input  id="dose-data" type="number" class="form-control" placeholder="Select">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Freq</label>
+											<div class="col-lg-9">
+												<input  id="freq-data" list="freq-list" type="text" class="form-control" placeholder="Select">
+												<datalist id="freq-list">
+													<option value="bd">bd</option>
+													<option value="tds">tds</option>
+													<option value="mane">mane</option>
+													<option value="nocte">nocte</option>
+													<option value="qds">qds</option>
+													<option value="daily">daily</option>
+													<option value="sos">sos</option>
+													<option value="eod">eod</option>
+													<option value="stat">stat</option>
+												</datalist>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label id="card-label" class="col-lg-3 col-form-label">Due</label>
+											<div class="col-lg-9">
+												<input  id="due-data" type="number" class="form-control" placeholder="Select">
+											</div>
+										</div>
+									</div>	
+									<div class="text-center">
+										<button id="add-drug-button" type="submit" class="btn btn-primary" style="background-color: rgb(89, 5, 168);">Add Drug<i class="icon-paperplane ml-2"></i></button>
+									</div>
+								</form>
+								<br/>
+							</div>
 							<!-- /horizotal form -->
 							
 							<!-- Basic datatable -->
@@ -420,10 +582,73 @@
 
 			console.log(drugObject);
 			console.log(drugsOfPatient);
+			
+			swal("Drug Added!" , `Drug Name: ${drugNameInDrugField}`, "success");
+			
 		})
 
 		/* ends create new drug object using drug data, and set those drug object to patient's drug array (drugOfPatient) */
 
+
+
+
+		var drugsBtn = document.getElementById("drugs-button");
+		var drugsBox = document.getElementById("drugs-box");
+
+		var testsBtn = document.getElementById("tests-button");
+		var testsBox = document.getElementById("tests-box");
+
+		var proceduresBtn = document.getElementById("procedures-button");
+		var proceduresBox = document.getElementById("procedures-box");
+		
+		var therapyBtn = document.getElementById("therapy-button");
+		var therapyBox = document.getElementById("therapy-box");
+
+		drugsBox.style.display = "block"
+		testsBox.style.display = "none";
+		proceduresBox.style.display = "none";
+		therapyBox.style.display = "none";
+
+		drugsBtn.addEventListener("click", function() {
+			if (drugsBox.style.display === "none") {
+				drugsBox.style.display = "block"
+				testsBox.style.display = "none";
+				proceduresBox.style.display = "none";
+				therapyBox.style.display = "none";
+			}
+
+			drugsBox.style.display = "block"
+			testsBox.style.display = "none";
+			proceduresBox.style.display = "none";
+			therapyBox.style.display = "none";
+		})
+
+		testsBtn.addEventListener("click", function() {
+			if (testsBox.style.display === "none") {
+				testsBox.style.display = "block"
+				drugsBox.style.display = "none";
+				proceduresBox.style.display = "none";
+				therapyBox.style.display = "none";
+			}
+		})
+
+		proceduresBtn.addEventListener("click", function() {
+			if (proceduresBox.style.display === "none") {
+				proceduresBox.style.display = "block"
+				drugsBox.style.display = "none";
+				testsBox.style.display = "none";
+				therapyBox.style.display = "none";
+			}
+		})
+
+		therapyBtn.addEventListener("click", function() {
+			if (therapyBox.style.display === "none") {
+				therapyBox.style.display = "block"
+				drugsBox.style.display = "none";
+				testsBox.style.display = "none";
+				proceduresBox.style.display = "none";
+			}
+		})
 
 
 	</script>
