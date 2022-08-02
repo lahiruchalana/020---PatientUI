@@ -64,7 +64,6 @@
 
     #new-patient-button {
         font-size: 12px;
-        /* height: 35px; */
     }
 
     #tab-body {
@@ -202,6 +201,39 @@
         font-size: 10px;
     }
 
+    #test-data {
+        font-size: 12px;
+    }
 
+    #test-subcategory-data {
+        font-size: 12px;
+    }
+
+    #test-comments-data {
+        font-size: 12px;
+    }
     
+    #therapy-data {
+        font-size: 12px;
+    }
+
+    #add-therapy-button {
+        font-size: 12px;
+    }
+
+    #procedures-data {
+        font-size: 12px;
+    }
+
+    #add-procedures-button {
+        font-size: 12px;
+    }
+
+    #add-test-button {
+        font-size: 12px;
+    }
+
+    #add-drug-button {
+        font-size: 12px;
+    }
 }
