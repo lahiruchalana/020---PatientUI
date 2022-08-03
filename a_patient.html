@@ -486,6 +486,29 @@
 
 
 
+		/* starts display drug data in the table (when load the web page) */
+
+		var table = document.getElementById("drugsTable");
+
+		var drugsOfPatientFromLocalStorage = JSON.parse(localStorage.getItem("drugsOfPatient") || "[]");
+
+		for (j = 0; j < drugsOfPatientFromLocalStorage.length; j++) {
+			var row = table.insertRow(j + 1);
+			var nameCell = row.insertCell(0);
+			var doseCell = row.insertCell(1);
+			var freqCell = row.insertCell(2);
+			var dueCell = row.insertCell(3);
+
+			nameCell.innerHTML = drugsOfPatientFromLocalStorage[j].drugNameInDrugField;
+			doseCell.innerHTML = drugsOfPatientFromLocalStorage[j].drugDoseInDoseField;
+			freqCell.innerHTML = drugsOfPatientFromLocalStorage[j].drugFreqInFreqField;
+			dueCell.innerHTML = drugsOfPatientFromLocalStorage[j].drugDueInDueField;
+		}
+		
+		/* ends display drug data in the table (when load the web page) */
+
+			
+
 		/* starts create new drug object using drug data, and set those drug object to patient's drug array (drugOfPatient) */
 
 		var drugDetailsForm = document.getElementById("drug-details-form");
@@ -502,28 +525,34 @@
 
 			drugObject = {drugNameInDrugField, drugDoseInDoseField, drugFreqInFreqField, drugDueInDueField }
 
+			drugsOfPatient = drugsOfPatientFromLocalStorage;								/* set local storage drugs data to new array */
 			drugsOfPatient.push(drugObject);
+
+			window.localStorage.setItem("drugsOfPatient", JSON.stringify(drugsOfPatient));		/* store drugs of patient to local storage */
 
 			console.log(drugObject);
 			console.log(drugsOfPatient);
 			
 			swal("Drug Added!" , `Drug Name: ${drugNameInDrugField}`, "success");
 
-			/* starts display drug data in the table */
+			/* starts display drug data in the table (when add a drug using the form)*/
 
-			var table = document.getElementById("drugsTable");
 			var row = table.insertRow(1);
 			var nameCell = row.insertCell(0);
 			var doseCell = row.insertCell(1);
 			var freqCell = row.insertCell(2);
 			var dueCell = row.insertCell(3);
 
-			nameCell.innerHTML = drugNameInDrugField;
-			doseCell.innerHTML = drugDoseInDoseField;
-			freqCell.innerHTML = drugFreqInFreqField;
-			dueCell.innerHTML = drugDueInDueField;
+			var drugsOfPatientFromLocalStorageInsideAddDrugFunction = JSON.parse(localStorage.getItem("drugsOfPatient") || "[]");	/* get drugs of patient from local storage */
+
+			for (j = 0; j < drugsOfPatientFromLocalStorage.length; j++) {
+				nameCell.innerHTML = drugsOfPatientFromLocalStorageInsideAddDrugFunction[j].drugNameInDrugField;
+				doseCell.innerHTML = drugsOfPatientFromLocalStorageInsideAddDrugFunction[j].drugDoseInDoseField;
+				freqCell.innerHTML = drugsOfPatientFromLocalStorageInsideAddDrugFunction[j].drugFreqInFreqField;
+				dueCell.innerHTML = drugsOfPatientFromLocalStorageInsideAddDrugFunction[j].drugDueInDueField;
+			}
 			
-			/* ends display drug data in the table */
+			/* ends display drug data in the table (when add a drug using the form) */
 			
 		})
 
