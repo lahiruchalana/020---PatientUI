@@ -242,4 +242,8 @@
         margin-top: -15px;
     }
 
+    #delete-table-button {
+        font-size: 12px;
+    }
+
 }

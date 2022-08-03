@@ -377,6 +377,13 @@
 									</tr> -->
 								</tbody>
 							</table>
+
+							<br>
+							<div class="text-center">
+								<button id="delete-table-button" type="button" class="btn btn-primary" style="background-color: rgb(89, 5, 168);">Delete All Records<i class="icon-paperplane ml-2"></i></button>
+							</div>
+							<br>
+
 						</div>
 						<!-- /basic datatable -->
 
@@ -557,6 +564,22 @@
 		})
 
 		/* ends create new drug object using drug data, and set those drug object to patient's drug array (drugOfPatient) */
+
+
+
+		/* starts delete all patient's data of drugs from local storage */
+
+		var deleteAllTableDrugsData = document.getElementById("delete-table-button");
+		
+		deleteAllTableDrugsData.addEventListener("click", function(e) {
+			e.preventDefault();
+
+			localStorage.removeItem("drugsOfPatient");
+
+			location.reload();
+		})
+
+		/* starts delete all patient's data of drugs from local storage */
 
 
 
