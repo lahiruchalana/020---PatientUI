@@ -354,15 +354,11 @@
 							<br/>
 						</div>
 
-
-
-
 						<!-- Basic datatable -->
 						<div class="card">
-							<table class="table datatable-basic">
+							<table class="table datatable-basic" id="drugsTable">
 								<thead>
 									<tr>
-										<th id="table-label">ID</th>
 										<th id="table-label">Name</th>
 										<th id="table-label">Dose</th>
 										<th id="table-label">Freq</th>
@@ -372,14 +368,12 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td id="table-label">1</td>
 										<td id="table-label"><a href="#">Enright</a></td>
 										<td id="table-label">Traffic Court Referee</td>
 										<td id="table-label">Traf</td>
 										<td id="table-label">Tr</td>
 									</tr>
 									<tr>
-										<td id="table-label">2</td>
 										<td id="table-label">Weible</td>
 										<td id="table-label"><a href="#">Airline Transport Pilot</a></td>
 										<td id="table-label">We</td>
@@ -520,6 +514,18 @@
 			console.log(drugsOfPatient);
 			
 			swal("Drug Added!" , `Drug Name: ${drugNameInDrugField}`, "success");
+
+			var table = document.getElementById("drugsTable");
+			var row = table.insertRow(1);
+			var nameCell = row.insertCell(0);
+			var doseCell = row.insertCell(1);
+			var freqCell = row.insertCell(2);
+			var dueCell = row.insertCell(3);
+
+			nameCell.innerHTML = drugNameInDrugField;
+			doseCell.innerHTML = drugDoseInDoseField;
+			freqCell.innerHTML = drugFreqInFreqField;
+			dueCell.innerHTML = drugDueInDueField;			
 			
 		})
 
@@ -527,6 +533,7 @@
 
 
 
+		/* starts display drug form, test form, procedures from and therapy form */
 
 		var drugsBtn = document.getElementById("drugs-button");
 		var drugsBox = document.getElementById("drugs-box");
@@ -590,6 +597,26 @@
 			}
 		})
 
+		/* ends display drug form, test form, procedures from and therapy form */
+
+
+
+		/* ends display drug form, test form, procedures from and therapy form */
+
+		// var table = $("#drugsTable").clone(true,true);		//First true to keep events, second true to deepcopy childs too. Remove it if you do not need it to make it faster.
+		// table.find("tr").slice(250,300).remove();
+
+		// console.log($table)
+
+		// console.log($table.find("tr").slice(250,300));
+
+		// $("#drugsTable").replaceWith($table);
+
+		// $("#drugsTable tr").slice(250, 300).html('');
+
+		// var row = document.getElementById("drugsTable tr")
+
+		// console.log(row);
 
 	</script>
 
