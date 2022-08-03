@@ -236,4 +236,10 @@
     #add-drug-button {
         font-size: 12px;
     }
+
+    td{
+        font-size: 10px;
+        margin-top: -15px;
+    }
+
 }

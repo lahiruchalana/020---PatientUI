@@ -367,20 +367,14 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+									<!-- <tr>
 										<td id="table-label"><a href="#">Enright</a></td>
 										<td id="table-label">Traffic Court Referee</td>
-										<td id="table-label">Traf</td>
-										<td id="table-label">Tr</td>
 									</tr>
 									<tr>
 										<td id="table-label">Weible</td>
 										<td id="table-label"><a href="#">Airline Transport Pilot</a></td>
-										<td id="table-label">We</td>
-										<td id="table-label">Wele</td>
-
-									</tr>
-									
+									</tr> -->
 								</tbody>
 							</table>
 						</div>
@@ -515,6 +509,8 @@
 			
 			swal("Drug Added!" , `Drug Name: ${drugNameInDrugField}`, "success");
 
+			/* starts display drug data in the table */
+
 			var table = document.getElementById("drugsTable");
 			var row = table.insertRow(1);
 			var nameCell = row.insertCell(0);
@@ -525,7 +521,9 @@
 			nameCell.innerHTML = drugNameInDrugField;
 			doseCell.innerHTML = drugDoseInDoseField;
 			freqCell.innerHTML = drugFreqInFreqField;
-			dueCell.innerHTML = drugDueInDueField;			
+			dueCell.innerHTML = drugDueInDueField;
+			
+			/* ends display drug data in the table */
 			
 		})
 
