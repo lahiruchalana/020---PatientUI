@@ -212,8 +212,8 @@
 								<div class="card">
 	
 									<div class="card-body">
-										<ul id="tab-body" class="nav nav-tabs nav-tabs-bottom nav-justified">
-											<li id="vital-signs-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link active" data-toggle="tab">Vital Signs <i id="tab-lable" class="icon-menu7 ml-2"></i></a></li>
+										<ul id="tab-body" class="nav nav-tabs nav-tabs-bottom nav-justified">		<!-- Symptoms = Vital Signs (if there is something with named "Vital Signs", that should be "Symptoms") -->
+											<li id="vital-signs-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link active" data-toggle="tab">Symptoms <i id="tab-lable" class="icon-menu7 ml-2"></i></a></li>
 											<li id="allergies-button" class="nav-item"><a href="#justified-right-icon-tab2" class="nav-link" data-toggle="tab">Allergies <i id="tab-lable" class="icon-mention ml-2"></i></a></li>
 											<li id="tab-button" class="nav-item dropdown">
 												<a id="tab-lable" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Other <i id="tab-lable" class="icon-gear ml-2"></i></a>
@@ -228,10 +228,10 @@
 								</div>
 							<div class="card-body py-0">
 
-								<div id="vital-signs-box" class="form-group">
-									<label id="card-title" >Vital Signs</label>
+								<div id="vital-signs-box" class="form-group">	<!-- Symptoms = Vital Signs (if there is something with named "Vital Signs", that should be "Symptoms") -->
+									<label id="card-title" >Symptoms</label>   <!-- Symptoms = Vital Signs -->
 									<select multiple="multiple" class="form-control select" data-fouc>
-										<optgroup label="Vital Signs">
+										<optgroup label="Vital Signs"> 	<!-- Symptoms = Vital Signs -->
 											<option value="No Breastfeeding" selected>No Breastfeeding</option>
 											<option value="No liver diseases" selected>No liver diseases</option>
 											<option value="No kidney diseases">No kidney diseases</option>
@@ -253,7 +253,7 @@
 								</div>
 
 								<div id="allergies-box" class="form-group">
-									<label id="card-title" >Allergies</label>
+									<label id="card-title" >Drug Allergies</label>
 									<select multiple="multiple" class="form-control select" data-fouc>
 										<optgroup label="Vital Signs">
 											<option value="Amoxicillin" selected>Amoxicillin</option>
