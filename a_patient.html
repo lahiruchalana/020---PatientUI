@@ -653,8 +653,14 @@
 
 
 
-		function deleteTheDrugFromTable() {
-			console.log("deleted drug");
+		function deleteTheDrugFromTable(drugRow) {
+			drugRow.remove();
+
+			// performe a function to (if statement with all the data) delete drug data in drugsOfPatient Array in local storage
+		}
+
+		function updateTheDrugFromTable(drugRow) {
+			console.log("update drug");
 		}
 
 		$("#drugsTable tr").click(function() {
@@ -682,7 +688,7 @@
 						}).then((value) => {
 							switch (value) {
 								case "yes": 
-									deleteTheDrugFromTable();
+									deleteTheDrugFromTable(this);
 									swal(`Removed the drug`, {
 										buttons: false,
 										timer: 1000,
@@ -699,7 +705,8 @@
 						break;
 				
 					case "edit":
-						swal("Gotcha!", "Pikachu was caught!", "success");
+						window.location.replace("/a_patient.html#drugs-button");
+						updateTheDrugFromTable(this);
 						break;
 				
 					default:
