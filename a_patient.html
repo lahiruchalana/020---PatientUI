@@ -162,6 +162,8 @@
 
 					</div>
 
+					<div id="drug-update-redirect-div"></div>
+
 					<!-- middle navbar -->
 					<div id="middle-navbar" class="navbar navbar-expand navbar-light px-0 px-lg-3">
 						<div class="overflow-auto overflow-lg-visible scrollbar-hidden flex-1">
@@ -231,7 +233,7 @@
 											</div>
 
 											<div class="form-group row">
-												<label id="card-label" class="col-lg-3 col-form-label">Freq</label>
+												<label id="card-label" class="col-lg-3 col-form-label">Frequent </label> <!-- Frequent  = freq (if there is something with named "freq", that should be "Frequent") -->
 												<div class="col-lg-9">
 													<input  id="freq-data" list="freq-list" type="text" class="form-control" placeholder="Select">
 													<datalist id="freq-list">
@@ -660,7 +662,25 @@
 		}
 
 		function updateTheDrugFromTable(drugRow) {
-			console.log("update drug");
+			var updateDrugName = drugRow.querySelectorAll("td")[0].innerText;
+			var updateDrugDose = drugRow.querySelectorAll("td")[1].innerText;
+			var updateDrugFreq = drugRow.querySelectorAll("td")[2].innerText;
+			var updateDrugDue = drugRow.querySelectorAll("td")[3].innerText;
+
+			console.log(`Drug Name: ${updateDrugName}`);
+			console.log(`Dose: ${updateDrugDose}`);
+			console.log(`Frequent: ${updateDrugFreq}`);
+			console.log(`Duration: ${updateDrugDue}`);
+
+			document.getElementById("drug-data").value = updateDrugName;
+			document.getElementById("dose-data").value = updateDrugDose;
+			document.getElementById("freq-data").value = updateDrugFreq;
+			document.getElementById("due-data").value = updateDrugDue;
+
+			drugRow.remove();
+
+			// performe a function to (if statement with all the data) delete drug data in drugsOfPatient Array in local storage
+			// insert new drug data to local storage
 		}
 
 		$("#drugsTable tr").click(function() {
@@ -705,7 +725,7 @@
 						break;
 				
 					case "edit":
-						window.location.replace("/a_patient.html#drugs-button");
+						window.location.replace("/a_patient.html#drug-update-redirect-div");
 						updateTheDrugFromTable(this);
 						break;
 				
