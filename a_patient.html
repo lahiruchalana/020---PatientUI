@@ -656,8 +656,47 @@
 
 
 		function deleteTheDrugFromTable(drugRow) {
+			var deleteDrugName = drugRow.querySelectorAll("td")[0].innerText;
+			var deleteDrugDose = drugRow.querySelectorAll("td")[1].innerText;
+			var deleteDrugFreq = drugRow.querySelectorAll("td")[2].innerText;
+			var deleteDrugDue = drugRow.querySelectorAll("td")[3].innerText;
+
+			for(var i =0,row;row = table.rows[i];i++){
+				var col = row.cells;
+
+				var drugNameInDrugField = col[0].innerHTML; 
+				var drugDoseInDoseField = col[1].innerHTML;
+				var drugFreqInFreqField = col[2].innerHTML; 
+				var drugDueInDueField = col[3].innerHTML;
+
+				if (deleteDrugName === drugNameInDrugField && deleteDrugDose === drugDoseInDoseField && deleteDrugFreq === drugFreqInFreqField && deleteDrugDue === drugDueInDueField) {
+					
+					var drugArray = JSON.parse(localStorage.getItem('drugsOfPatient'));
+
+					drugArray.splice((i-1), 1);
+
+					console.log(drugArray)
+
+					window.localStorage.setItem("drugsOfPatient", JSON.stringify(drugArray));
+
+					break
+				}
+			}
+
 			drugRow.remove();
 
+			// location.reload();
+
+
+
+			
+			// window.localStorage.setItem("drugsOfPatient", JSON.stringify(drugsOfPatient));
+			// console.log(drugsOfPatient);
+
+			// add the table data to array and clean before all the data and insert again data
+			// 1. delete the drug row
+			// 2. clear the local storage for drugsOfPatient
+			// 3. add the new table to the local storage for drugsOfPatient
 			// performe a function to (if statement with all the data) delete drug data in drugsOfPatient Array in local storage
 		}
 
@@ -677,10 +716,7 @@
 			document.getElementById("freq-data").value = updateDrugFreq;
 			document.getElementById("due-data").value = updateDrugDue;
 
-			drugRow.remove();
-
-			// performe a function to (if statement with all the data) delete drug data in drugsOfPatient Array in local storage
-			// insert new drug data to local storage
+			deleteTheDrugFromTable(drugRow);
 		}
 
 		$("#drugsTable tr").click(function() {
