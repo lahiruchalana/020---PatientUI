@@ -653,8 +653,62 @@
 
 
 
+		function deleteTheDrugFromTable() {
+			console.log("deleted drug");
+		}
+
 		$("#drugsTable tr").click(function() {
-			swal("Selected Drug!" , `Drug Name: ${$(this).children("td").html()}`, "success");
+			swal({ 
+				title:"Drug Selected!", 
+				text: `${$(this).children("td").html()}`, 
+				icon: "success",
+				buttons: {
+					cancel: "Cancel",
+					edit: "Edit",
+					delete: "Delete",
+				}
+			}).then((value) => {
+				switch (value) {
+			
+					case "delete":
+						swal({
+							title: "Do You Really Need To Remove The Drug?", 
+							text: `${$(this).children("td").html()}`, 
+							icon: "warning",
+							buttons: {
+								cancel: "No",
+								yes: "Yes",
+							}
+						}).then((value) => {
+							switch (value) {
+								case "yes": 
+									deleteTheDrugFromTable();
+									swal(`Removed the drug`, {
+										buttons: false,
+										timer: 1000,
+									});
+									break;
+
+								default:
+								swal(`Drug is safe!!!`, {
+									buttons: false,
+									timer: 1000,
+								});
+							}
+						})
+						break;
+				
+					case "edit":
+						swal("Gotcha!", "Pikachu was caught!", "success");
+						break;
+				
+					default:
+					swal(`Drug is safe!!!`, {
+						buttons: false,
+						timer: 1000,
+					});
+				}
+			});
 		});
 
 
