@@ -273,11 +273,6 @@
 												<div class="col-lg-9">
 													<input  id="test-data" list="test-list" type="text" class="form-control" placeholder="Search Drug">
 													<datalist id="test-list">
-														<option value="Common Test">Common Test</option>
-														<option value="Favorite">Favorite</option>
-														<option value="Covid 19">Covid 19</option>
-														<option value="Surgery">Surgery</option>
-														<option value="Cardiology">Cardiology</option>
 													</datalist>
 												</div>
 											</div>
@@ -285,9 +280,8 @@
 											<div class="form-group row">
 												<label id="card-label" class="col-lg-3 col-form-label">Subcategory</label>
 												<div class="col-lg-9">
-													<input  id="test-subcategory-data" list="freq-list" type="text" class="form-control" placeholder="Select">
-													<datalist id="freq-list">
-														<option value="bd">ANA</option>
+													<input  id="test-subcategory-data" list="sub-test-list" type="text" class="form-control" placeholder="Select">
+													<datalist id="sub-test-list">
 													</datalist>
 												</div>
 											</div>
@@ -295,7 +289,7 @@
 											<div class="form-group row">
 												<label id="card-label" class="col-lg-3 col-form-label">Comments</label>
 												<div class="col-lg-9">
-													<input  id="test-comments-data" type="number" class="form-control" placeholder="Comments">
+													<input  id="test-comments-data" type="text" class="form-control" placeholder="Comments">
 												</div>
 											</div>
 		
@@ -784,7 +778,7 @@
 
 
 
-		/* starts display tests from tests.json file */
+		/* starts get tests data from tests.json file */
 
 		var xhrt = new XMLHttpRequest();
         var testDataByTestName = {};
@@ -800,18 +794,70 @@
 				testArray = content['tests'];		 						/* if you need test data without name use this */
 
 				for (i = 0, count = testArray.length; i < count; i++) {		/* get test data with name (for search function to perform) */
-					testName = testArray[i]['drugName'];
+					testName = testArray[i]['testName'];
 					testDataByTestName[testName] = testArray[i];
 				}
 
 				console.log(testArray);
-				// console.log(testDataByTestName);
+				console.log(testDataByTestName);
 			}
 
 		};
 		xhrt.send(null);
 
-		/* ends display tests from tests.json file */
+		/* ends get tests data from tests.json file */
+
+
+
+		/* starts added tests.json data to options of datalist in Test input field */
+
+		function getTestsToTestField() {
+			var url, testOption;
+			url = 'data/tests.json';
+
+			$.getJSON(url, function(data) {
+				$(data.tests).each(function() {     					/* populate the tests datalist */
+					testOption = `<option value="${this.testName}">${this.testName}</option>`;
+					$('#test-list').append(testOption);
+				});
+			});
+		}
+
+		window.onload = getTestsToTestField();
+
+		/* ends added drugs.json data to options of datalist in Drug input field */
+
+
+
+		/* starts autofill default data of drugs */
+
+		var testNameController = document.getElementById("test-data");
+
+		testNameController.oninput = function() {
+			var drugNameInDrugField = document.getElementById("test-data").value;
+
+			window.localStorage.setItem("tetsName", drugNameInDrugField)
+
+			console.log(drugNameInDrugField);
+			console.log(testDataByTestName[drugNameInDrugField]);
+			
+			if (drugNameInDrugField && testDataByTestName[drugNameInDrugField]) {
+
+				var subTestArray, subTestOption, i;
+
+				subTestArray = testDataByTestName[drugNameInDrugField].subTestNames;
+
+				for (i = 0; i < subTestArray.length; i++) {
+					subTestOption = `<option value="${subTestArray[i]}">${subTestArray[i]}</option>`;
+					$("#sub-test-list").append(subTestOption);					
+				}
+				
+
+			}
+
+		}
+
+		/* ends autofill default data of drugs */
 
 
 	</script>
