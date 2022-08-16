@@ -351,7 +351,7 @@
 						</div>
 
 						<!-- Basic datatable -->
-						<div class="card">
+						<div id="drugs-table-box" class="card">
 							<table class="table datatable-basic" id="drugsTable">
 								<thead>
 									<tr>
@@ -595,7 +595,10 @@
 		var therapyBtn = document.getElementById("therapy-button");
 		var therapyBox = document.getElementById("therapy-box");
 
-		drugsBox.style.display = "block"
+		var drugsTableBox = document.getElementById("drugs-table-box");
+
+		drugsBox.style.display = "block";
+		drugsTableBox.style.display = "block";
 		testsBox.style.display = "none";
 		proceduresBox.style.display = "none";
 		therapyBox.style.display = "none";
@@ -603,12 +606,14 @@
 		drugsBtn.addEventListener("click", function() {
 			if (drugsBox.style.display === "none") {
 				drugsBox.style.display = "block";
+				drugsTableBox.style.display = "block";
 				testsBox.style.display = "none";
 				proceduresBox.style.display = "none";
 				therapyBox.style.display = "none";
 			}
 
 			drugsBox.style.display = "block";
+			drugsTableBox.style.display = "block";
 			testsBox.style.display = "none";
 			proceduresBox.style.display = "none";
 			therapyBox.style.display = "none";
@@ -618,6 +623,7 @@
 			if (testsBox.style.display === "none") {
 				testsBox.style.display = "block";
 				drugsBox.style.display = "none";
+				drugsTableBox.style.display = "none";
 				proceduresBox.style.display = "none";
 				therapyBox.style.display = "none";
 			}
@@ -627,6 +633,7 @@
 			if (proceduresBox.style.display === "none") {
 				proceduresBox.style.display = "block";
 				drugsBox.style.display = "none";
+				drugsTableBox.style.display = "none";
 				testsBox.style.display = "none";
 				therapyBox.style.display = "none";
 
@@ -638,6 +645,7 @@
 			if (therapyBox.style.display === "none") {
 				therapyBox.style.display = "block";
 				drugsBox.style.display = "none";
+				drugsTableBox.style.display = "none";
 				testsBox.style.display = "none";
 				proceduresBox.style.display = "none";
 
