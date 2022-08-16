@@ -1,0 +1,41 @@
+{
+    "title":    "Tests",
+    "tests":   [
+        {
+            "testName": "Common Test", 
+            "subTestNames": [
+                "FBC", "ESR", "UFR", "CRP", "Urine for microalbumin", "FBS"
+            ]
+        },
+        {
+            "testName": "Favorite", 
+            "subTestNames": [
+                "ANA", "IgG level", "HFE gene", "KF rings", "Serum", "Anti liver"
+            ]
+        },
+        {
+            "testName": "Covid 19", 
+            "subTestNames": [
+                "RAT", "PCR", "Full blood count", "Liver function test"
+            ]
+        },
+        {
+            "testName": "Surgery", 
+            "subTestNames": [
+                "PCR", "Liver"
+            ]
+        },
+        {
+            "testName": "Cardiology", 
+            "subTestNames": [
+                "CK", "MB", "Cardiac", "Lp"
+            ]
+        },
+        {
+            "testName": "Diabetalogy", 
+            "subTestNames": [
+                "Urea", "Peptide", "GAD", "24H", "HBA", "1CA"
+            ]
+        }
+    ]
+}

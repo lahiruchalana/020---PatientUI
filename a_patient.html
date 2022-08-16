@@ -655,9 +655,7 @@
 
 
 
-
-
-
+		/* starts update and delete the relevant drug data in the table */
 
 		let updatingDrugDataDrugName = localStorage.getItem("drugName");
 		let updatingDrugDataDrugDose = localStorage.getItem("drugDose");
@@ -701,16 +699,6 @@
 
 			location.reload();
 
-
-			
-			// window.localStorage.setItem("drugsOfPatient", JSON.stringify(drugsOfPatient));
-			// console.log(drugsOfPatient);
-
-			// add the table data to array and clean before all the data and insert again data
-			// 1. delete the drug row
-			// 2. clear the local storage for drugsOfPatient
-			// 3. add the new table to the local storage for drugsOfPatient
-			// performe a function to (if statement with all the data) delete drug data in drugsOfPatient Array in local storage
 		}
 
 		function updateTheDrugFromTable(drugRow) {
@@ -792,27 +780,39 @@
 			});
 		});
 
+		/* ends update and delete the relevant drug data in the table */
 
 
 
+		/* starts display tests from tests.json file */
 
+		var xhrt = new XMLHttpRequest();
+        var testDataByTestName = {};
+		var testArray;
 
-		/* ends display drug form, test form, procedures from and therapy form */
+		xhrt.overrideMimeType("application/json");
+		xhrt.open('GET', 'data/tests.json', true);
+		xhrt.onreadystatechange = function () {
+			if (xhrt.readyState == 4 && xhrt.status == "200") {
+				var content = JSON.parse(this.response);
+				var	i, count, testName;
 
-		// var table = $("#drugsTable").clone(true,true);		//First true to keep events, second true to deepcopy childs too. Remove it if you do not need it to make it faster.
-		// table.find("tr").slice(250,300).remove();
+				testArray = content['tests'];		 						/* if you need test data without name use this */
 
-		// console.log($table)
+				for (i = 0, count = testArray.length; i < count; i++) {		/* get test data with name (for search function to perform) */
+					testName = testArray[i]['drugName'];
+					testDataByTestName[testName] = testArray[i];
+				}
 
-		// console.log($table.find("tr").slice(250,300));
+				console.log(testArray);
+				// console.log(testDataByTestName);
+			}
 
-		// $("#drugsTable").replaceWith($table);
+		};
+		xhrt.send(null);
 
-		// $("#drugsTable tr").slice(250, 300).html('');
+		/* ends display tests from tests.json file */
 
-		// var row = document.getElementById("drugsTable tr")
-
-		// console.log(row);
 
 	</script>
 
