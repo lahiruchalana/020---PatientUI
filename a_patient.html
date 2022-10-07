@@ -481,6 +481,13 @@
 				document.getElementById("dose-data").value = drugDataByDrugName[drugNameInDrugField].defaultDose;
 				document.getElementById("freq-data").value = drugDataByDrugName[drugNameInDrugField].defaultFreq;
 				document.getElementById("due-data").value = drugDataByDrugName[drugNameInDrugField].defaultDue;
+			} else if (drugNameInDrugField != null) {
+				document.getElementById("drug-data").value = null;
+				document.getElementById("dose-data").value = " ";
+				document.getElementById("freq-data").value = " ";
+				document.getElementById("due-data").value = " ";				
+			} else {
+				
 			}
 
 		}
@@ -833,11 +840,11 @@
 
 		window.onload = getTestsToTestField();
 
-		/* ends added drugs.json data to options of datalist in Drug input field */
+		/* ends added tests.json data to options of datalist in Test input field*/
 
 
 
-		/* starts autofill default data of drugs */
+		/* starts added tests.json subTest data to options of datalist in Test input field */
 
 		var testNameController = document.getElementById("test-data");
 
@@ -861,11 +868,15 @@
 				}
 				
 
+			} else {
+				document.getElementById("test-subcategory-data").value = " ";
+				document.getElementById("test-data").value = " ";
+				$("#sub-test-list").replace(); // cleare past options
 			}
 
 		}
 
-		/* ends autofill default data of drugs */
+		/* ends added tests.json subTest data to options of datalist in Test input field */
 
 
 	</script>

@@ -415,13 +415,6 @@
 
 			/* ends entering valid data */
 
-			// var xhr = new XMLHttpRequest();				/* request send to the userData to API */
-			// xhr.open("POST", 'patient.php', true);
-			// xhr.setRequestHeader('Content-Type', 'application/json');
-			// xhr.send(JSON.stringify({
-			// 	value: userData
-			// }));
-
 		})
 
 		/* ends function to send a object of patient and gender button working */
@@ -579,13 +572,7 @@
 
 				} 
 			} else {
-				newPatientBtn.style.display = 'block';
-
-				// document.getElementById("name-data").value = "";   /* when mobile number is not exist you need to create a new user, so execute that you can not use this "else" statement */   
-				// document.getElementById("age-data").value = "";		/* when you found a user using mobile number and then the input fields automatically filled then - */
-																		/* - you change again the number then you need to make empty input fields but it can not perform in this format */
-				// initialGenderButton();									
-
+				newPatientBtn.style.display = 'block';							
 			}
 
 			return false;   	/* must return false to prevent the default form behavior */

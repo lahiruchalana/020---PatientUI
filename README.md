@@ -1,3 +1,3 @@
-# UIs for doctor profiles for patients
+# UIs for Meidca Lite
 
 JavaScript, HTML, CSS

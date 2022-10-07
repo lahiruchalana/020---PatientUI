@@ -22,7 +22,7 @@
         {
             "testName": "Surgery", 
             "subTestNames": [
-                "PCR", "Liver"
+                "RCDS", "Liver", "HBVCC", "GHSGDV"
             ]
         },
         {
